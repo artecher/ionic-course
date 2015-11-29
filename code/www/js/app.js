@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('songhop', ['ionic', 'songhop.controllers'])
+angular.module('songhop', ['ionic', 'songhop.controllers', 'ionic.utils'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,13 +29,18 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
   // Each state's controller can be found in controllers.js.
   $stateProvider
 
+  .state('splash', {
+      url: '/',
+      templateUrl: 'templates/splash.html',
+      controller: 'SplashCtrl as sctrl'
+    })
 
   // Set up an abstract state for the tabs directive:
   .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',
-    controller: 'TabsCtrl'
+    controller: 'TabsCtrl as tctrl'
   })
 
   // Each tab has its own nav history stack:
@@ -45,7 +50,7 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
     views: {
       'tab-discover': {
         templateUrl: 'templates/discover.html',
-        controller: 'DiscoverCtrl'
+        controller: 'DiscoverCtrl as dctrl'
       }
     }
   })
@@ -55,12 +60,12 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
       views: {
         'tab-favorites': {
           templateUrl: 'templates/favorites.html',
-          controller: 'FavoritesCtrl'
+          controller: 'FavoritesCtrl as fctrl'
         }
       }
     })
   // If none of the above states are matched, use this as the fallback:
-  $urlRouterProvider.otherwise('/tab/discover');
+  $urlRouterProvider.otherwise('/');
 
 })
 

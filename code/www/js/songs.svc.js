@@ -1,7 +1,7 @@
 angular.module('songhop')
 
 .factory('SongService', function(){
-    var service = {
+    return {
       songs: [
         {
           "title":"Stealing Cinderella",
@@ -22,7 +22,6 @@ angular.module('songhop')
           "image_large":"https://i.scdn.co/image/4e47ee3f6214fabbbed2092a21e62ee2a830058a"
         }
       ]
-    };
+    }
 
-    return service;
   });
